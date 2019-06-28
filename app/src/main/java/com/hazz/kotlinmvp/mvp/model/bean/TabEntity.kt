@@ -2,12 +2,13 @@ package com.hazz.kotlinmvp.mvp.model.bean
 
 import com.flyco.tablayout.listener.CustomTabEntity
 
-
-
 /**
- * Created by xuhao on 2017/11/8.
+ * Tab页实体
  */
-class TabEntity(var title: String, private var selectedIcon: Int, private var unSelectedIcon: Int) : CustomTabEntity {
+class TabEntity(var title: String,
+                private var selectedIcon: Int,
+                private var unSelectedIcon: Int)
+    : CustomTabEntity {
 
     override fun getTabTitle(): String {
         return title

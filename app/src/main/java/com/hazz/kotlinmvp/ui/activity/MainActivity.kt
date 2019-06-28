@@ -10,7 +10,10 @@ import com.hazz.kotlinmvp.R
 import com.hazz.kotlinmvp.base.BaseActivity
 import com.hazz.kotlinmvp.mvp.model.bean.TabEntity
 import com.hazz.kotlinmvp.showToast
-import com.hazz.kotlinmvp.ui.fragment.*
+import com.hazz.kotlinmvp.ui.fragment.DiscoveryFragment
+import com.hazz.kotlinmvp.ui.fragment.HomeFragment
+import com.hazz.kotlinmvp.ui.fragment.HotFragment
+import com.hazz.kotlinmvp.ui.fragment.MineFragment
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
 
@@ -42,7 +45,6 @@ class MainActivity : BaseActivity() {
     //默认为0
     private var mIndex = 0
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         if (savedInstanceState != null) {
             mIndex = savedInstanceState.getInt("currTabIndex")
@@ -51,18 +53,21 @@ class MainActivity : BaseActivity() {
         initTab()
         tab_layout.currentTab = mIndex
         switchFragment(mIndex)
-
     }
 
     override fun layoutId(): Int {
         return R.layout.activity_main
     }
 
-
-    //初始化底部菜单
+    /**
+     * 初始化底部菜单
+     */
     private fun initTab() {
         (0 until mTitles.size)
-                .mapTo(mTabEntities) { TabEntity(mTitles[it], mIconSelectIds[it], mIconUnSelectIds[it]) }
+                .mapTo(mTabEntities) {
+            TabEntity(mTitles[it], mIconSelectIds[it], mIconUnSelectIds[it])
+        }
+
         //为Tab赋值
         tab_layout.setTabData(mTabEntities)
         tab_layout.setOnTabSelectListener(object : OnTabSelectListener {
@@ -97,19 +102,22 @@ class MainActivity : BaseActivity() {
                 transaction.show(it)
             } ?: DiscoveryFragment.getInstance(mTitles[position]).let {
                 mDiscoveryFragment = it
-                transaction.add(R.id.fl_container, it, "discovery") }
+                transaction.add(R.id.fl_container, it, "discovery")
+            }
             2  //热门
             -> mHotFragment?.let {
                 transaction.show(it)
             } ?: HotFragment.getInstance(mTitles[position]).let {
                 mHotFragment = it
-                transaction.add(R.id.fl_container, it, "hot") }
+                transaction.add(R.id.fl_container, it, "hot")
+            }
             3 //我的
             -> mMineFragment?.let {
                 transaction.show(it)
             } ?: MineFragment.getInstance(mTitles[position]).let {
                 mMineFragment = it
-                transaction.add(R.id.fl_container, it, "mine") }
+                transaction.add(R.id.fl_container, it, "mine")
+            }
 
             else -> {
 

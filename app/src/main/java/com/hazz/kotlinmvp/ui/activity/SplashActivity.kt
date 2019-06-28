@@ -61,13 +61,9 @@ class SplashActivity : BaseActivity() {
             override fun onAnimationEnd(arg0: Animation) {
                 redirectTo()
             }
-
             override fun onAnimationRepeat(animation: Animation) {}
-
             override fun onAnimationStart(animation: Animation) {}
-
         })
-
         checkPermission()
     }
 
@@ -88,10 +84,13 @@ class SplashActivity : BaseActivity() {
      */
     private fun checkPermission(){
         val perms = arrayOf(Manifest.permission.READ_PHONE_STATE, Manifest.permission.WRITE_EXTERNAL_STORAGE)
-        EasyPermissions.requestPermissions(this, "KotlinMvp应用需要以下权限，请允许", 0, *perms)
-
+        EasyPermissions.requestPermissions(
+                this,
+                "KotlinMvp应用需要以下权限，请允许",
+                0,
+                *perms)
+        //* 传播操作符，perms是一个数组，*操作符可以把数组变为函数参数传递
     }
-
 
     override fun onPermissionsGranted(requestCode: Int, perms: List<String>) {
         if (requestCode == 0) {
@@ -105,6 +104,4 @@ class SplashActivity : BaseActivity() {
             }
         }
     }
-
-
 }

@@ -85,10 +85,10 @@ import pub.devrel.easypermissions.EasyPermissions
      */
     abstract fun lazyLoad()
 
-    override fun onDestroy() {
-        super.onDestroy()
-        activity?.let { MyApplication.getRefWatcher(it)?.watch(activity) }
-    }
+//    override fun onDestroy() {
+//        super.onDestroy()
+//        activity?.let { MyApplication.getRefWatcher(it)?.watch(activity) }
+//    }
 
 
     /**
