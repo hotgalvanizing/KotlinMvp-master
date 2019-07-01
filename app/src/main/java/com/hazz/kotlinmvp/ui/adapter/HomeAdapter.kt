@@ -62,8 +62,10 @@ class HomeAdapter(context: Context, data: ArrayList<HomeBean.Issue.Item>)
         return when {
             position == 0 ->
                 ITEM_TYPE_BANNER
+
             mData[position + bannerItemSize - 1].type == "textHeader" ->
                 ITEM_TYPE_TEXT_HEADER
+
             else ->
                 ITEM_TYPE_CONTENT
         }
@@ -110,17 +112,13 @@ class HomeAdapter(context: Context, data: ArrayList<HomeBean.Issue.Item>)
                                     .transition(DrawableTransitionOptions().crossFade())
                                     .placeholder(R.drawable.placeholder_banner)
                                     .into(banner.getItemImageView(position))
-
-
                         }
 
                     }
                 }
                 //没有使用到的参数在 kotlin 中用"_"代替
                 holder.getView<BGABanner>(R.id.banner).setDelegate { _, imageView, _, i ->
-
                     goToVideoPlayer(mContext as Activity, imageView, bannerItemData[i])
-
                 }
             }
             //TextHeader
@@ -132,8 +130,6 @@ class HomeAdapter(context: Context, data: ArrayList<HomeBean.Issue.Item>)
             ITEM_TYPE_CONTENT -> {
                 setVideoItem(holder, mData[position + bannerItemSize - 1])
             }
-
-
         }
 
     }

@@ -75,10 +75,12 @@ class HomeFragment : BaseFragment(), HomeContract.View {
         mPresenter.attachView(this)
         //内容跟随偏移
         mRefreshLayout.setEnableHeaderTranslationContent(true)
+
         mRefreshLayout.setOnRefreshListener {
             isRefresh = true
             mPresenter.requestHomeData(num)
         }
+
         mMaterialHeader = mRefreshLayout.refreshHeader as MaterialHeader?
         //打开下拉刷新区域块背景:
         mMaterialHeader?.setShowBezierWave(true)

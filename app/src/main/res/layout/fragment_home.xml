@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     android:background="@color/backgroundColor">
 
-
     <com.scwang.smartrefresh.layout.SmartRefreshLayout
         android:id="@+id/mRefreshLayout"
         android:layout_width="match_parent"
@@ -81,8 +80,6 @@
 
         </FrameLayout>
 
-
     </com.scwang.smartrefresh.layout.SmartRefreshLayout>
-
 
 </RelativeLayout>
