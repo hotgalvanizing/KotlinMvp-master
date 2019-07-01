@@ -91,7 +91,8 @@ class HomeAdapter(context: Context, data: ArrayList<HomeBean.Issue.Item>)
         when (getItemViewType(position)) {
             //Banner
             ITEM_TYPE_BANNER -> {
-                val bannerItemData: ArrayList<HomeBean.Issue.Item> = mData.take(bannerItemSize).toCollection(ArrayList())
+                val bannerItemData: ArrayList<HomeBean.Issue.Item> =
+                        mData.take(bannerItemSize).toCollection(ArrayList())
                 val bannerFeedList = ArrayList<String>()
                 val bannerTitleList = ArrayList<String>()
                 //取出banner 显示的 img 和 Title
@@ -113,7 +114,6 @@ class HomeAdapter(context: Context, data: ArrayList<HomeBean.Issue.Item>)
                                     .placeholder(R.drawable.placeholder_banner)
                                     .into(banner.getItemImageView(position))
                         }
-
                     }
                 }
                 //没有使用到的参数在 kotlin 中用"_"代替
@@ -121,6 +121,7 @@ class HomeAdapter(context: Context, data: ArrayList<HomeBean.Issue.Item>)
                     goToVideoPlayer(mContext as Activity, imageView, bannerItemData[i])
                 }
             }
+
             //TextHeader
             ITEM_TYPE_TEXT_HEADER -> {
                 holder.setText(R.id.tvHeader, mData[position + bannerItemSize - 1].data?.text ?: "")
@@ -157,7 +158,6 @@ class HomeAdapter(context: Context, data: ArrayList<HomeBean.Issue.Item>)
         val view = mInflater?.inflate(mLayoutId, parent, false)
         return view ?: View(parent.context)
     }
-
 
     /**
      * 加载 content item

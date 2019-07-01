@@ -43,6 +43,11 @@ interface HomeContract {
          */
         fun loadMoreData()
 
+        /**
+         * 获取首页Json
+         */
+        fun requestHomeJson(num:Int)
+
 
     }
 

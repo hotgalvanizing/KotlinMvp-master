@@ -128,7 +128,10 @@ class HomeFragment : BaseFragment(), HomeContract.View {
             }
         })
 
-        iv_search.setOnClickListener { openSearchActivity() }
+        iv_search.setOnClickListener {
+//            mPresenter.requestHomeJson(num)
+            openSearchActivity()
+        }
 
         mLayoutStatusView = multipleStatusView
 

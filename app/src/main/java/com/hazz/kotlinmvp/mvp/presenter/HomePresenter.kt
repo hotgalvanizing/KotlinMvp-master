@@ -1,11 +1,17 @@
 package com.hazz.kotlinmvp.mvp.presenter
 
 import android.annotation.SuppressLint
+import android.util.Log
 import com.hazz.kotlinmvp.base.BasePresenter
 import com.hazz.kotlinmvp.mvp.contract.HomeContract
 import com.hazz.kotlinmvp.mvp.model.HomeModel
 import com.hazz.kotlinmvp.mvp.model.bean.HomeBean
 import com.hazz.kotlinmvp.net.exception.ExceptionHandle
+import okhttp3.ResponseBody
+import org.json.JSONObject
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 /**
  * Created by xuhao on 2017/11/8.
@@ -15,6 +21,28 @@ import com.hazz.kotlinmvp.net.exception.ExceptionHandle
 
 class HomePresenter : BasePresenter<HomeContract.View>(), HomeContract.Presenter {
 
+    override fun requestHomeJson(num: Int) {
+        homeModel.requestHomeJosn(num).enqueue(object : Callback<ResponseBody> {
+            override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+                Log.d("TestKotlin", t.toString())
+            }
+
+            override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
+                val s = response.body()?.string()
+                val jsonObject = JSONObject(s)
+                val nextPageUrl = jsonObject.optString("nextPageUrl")
+                homeModel.loadMoreJson(nextPageUrl).enqueue(object :Callback<ResponseBody>{
+                    override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+                        Log.d("TestKotlin", t.toString())
+                    }
+                    override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
+                        val ss = response.body()?.string()
+                        Log.d("TestKotlin", ss)
+                    }
+                })
+            }
+        })
+    }
 
     private var bannerHomeBean: HomeBean? = null
 
