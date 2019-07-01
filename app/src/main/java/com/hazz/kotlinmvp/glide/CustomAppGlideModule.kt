@@ -19,7 +19,8 @@ import java.io.InputStream
 class CustomAppGlideModule : AppGlideModule() {
 
     /**
-     * 通过GlideBuilder设置默认的结构(Engine,BitmapPool ,ArrayPool,MemoryCache等等).
+     * 通过GlideBuilder设置默认的结构
+     * (Engine,BitmapPool ,ArrayPool,MemoryCache等等).
      *
      * @param context
      * @param builder
@@ -34,7 +35,6 @@ class CustomAppGlideModule : AppGlideModule() {
 
     /**
      * 清单解析的开启
-     *
      *
      * 这里不开启，避免添加相同的modules两次
      *

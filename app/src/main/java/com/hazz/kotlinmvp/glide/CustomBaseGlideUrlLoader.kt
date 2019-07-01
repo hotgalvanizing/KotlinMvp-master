@@ -11,7 +11,9 @@ import java.util.regex.Pattern
  * desc:
  */
 
-class CustomBaseGlideUrlLoader(concreteLoader: ModelLoader<GlideUrl, InputStream>, modelCache: ModelCache<String, GlideUrl>) : BaseGlideUrlLoader<String>(concreteLoader, modelCache) {
+class CustomBaseGlideUrlLoader(
+        concreteLoader: ModelLoader<GlideUrl, InputStream>,
+        modelCache: ModelCache<String, GlideUrl>) : BaseGlideUrlLoader<String>(concreteLoader, modelCache) {
 
     /**
      * If the URL contains a special variable width indicator (eg "__w-200-400-800__")
@@ -25,7 +27,10 @@ class CustomBaseGlideUrlLoader(concreteLoader: ModelLoader<GlideUrl, InputStream
         val m = PATTERN.matcher(model)
         var bestBucket: Int
         if (m.find()) {
-            val found = m.group(1).split("-".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()
+            val found = m.group(1)
+                    .split("-".toRegex())
+                    .dropLastWhile { it.isEmpty() }
+                    .toTypedArray()
             for (bucketStr in found) {
                 bestBucket = Integer.parseInt(bucketStr)
                 if (bestBucket >= width) {
@@ -46,8 +51,10 @@ class CustomBaseGlideUrlLoader(concreteLoader: ModelLoader<GlideUrl, InputStream
      * 工厂来构建CustomBaseGlideUrlLoader对象
      */
     class Factory : ModelLoaderFactory<String, InputStream> {
-        override fun build(multiFactory: MultiModelLoaderFactory): ModelLoader<String, InputStream> {
-            return CustomBaseGlideUrlLoader(multiFactory.build(GlideUrl::class.java, InputStream::class.java), urlCache)
+        override fun build(multiFactory: MultiModelLoaderFactory):
+                ModelLoader<String, InputStream> {
+            return CustomBaseGlideUrlLoader(multiFactory.build(GlideUrl::class.java,
+                    InputStream::class.java), urlCache)
         }
 
         override fun teardown() {
