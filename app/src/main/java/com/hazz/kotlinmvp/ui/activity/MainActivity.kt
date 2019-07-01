@@ -63,8 +63,7 @@ class MainActivity : BaseActivity() {
      * 初始化底部菜单
      */
     private fun initTab() {
-        (0 until mTitles.size)
-                .mapTo(mTabEntities) {
+        (0 until mTitles.size).mapTo(mTabEntities) {
             TabEntity(mTitles[it], mIconSelectIds[it], mIconUnSelectIds[it])
         }
 
@@ -76,9 +75,7 @@ class MainActivity : BaseActivity() {
                 switchFragment(position)
             }
 
-            override fun onTabReselect(position: Int) {
-
-            }
+            override fun onTabReselect(position: Int) {}
         })
     }
 
@@ -91,12 +88,14 @@ class MainActivity : BaseActivity() {
         hideFragments(transaction)
         when (position) {
             0 // 首页
+
             -> mHomeFragment?.let {
                 transaction.show(it)
-            } ?: HomeFragment.getInstance(mTitles[position]).let {
+            }?:HomeFragment.getInstance(mTitles[position]).let {
                 mHomeFragment = it
-                transaction.add(R.id.fl_container, it, "home")
+                transaction.add(R.id.fl_container,it,"home")
             }
+
             1  //发现
             -> mDiscoveryFragment?.let {
                 transaction.show(it)
@@ -118,7 +117,6 @@ class MainActivity : BaseActivity() {
                 mMineFragment = it
                 transaction.add(R.id.fl_container, it, "mine")
             }
-
             else -> {
 
             }

@@ -85,7 +85,6 @@ class HomeFragment : BaseFragment(), HomeContract.View {
         //设置下拉刷新主题颜色
         mRefreshLayout.setPrimaryColorsId(R.color.color_light_black, R.color.color_title_bg)
 
-
         mRecyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrollStateChanged(recyclerView: RecyclerView?, newState: Int) {
                 super.onScrollStateChanged(recyclerView, newState)
@@ -124,8 +123,6 @@ class HomeFragment : BaseFragment(), HomeContract.View {
                         }
                     }
                 }
-
-
             }
         })
 
