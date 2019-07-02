@@ -19,6 +19,7 @@ import com.hazz.kotlinmvp.view.recyclerview.adapter.CommonAdapter
  */
 class FollowAdapter(context: Context, dataList: ArrayList<HomeBean.Issue.Item>)
     : CommonAdapter<HomeBean.Issue.Item>(context, dataList, object : MultipleType<HomeBean.Issue.Item> {
+
     override fun getLayoutId(item: HomeBean.Issue.Item, position: Int): Int {
         return when {
             item.type == "videoCollectionWithBrief" ->
@@ -28,7 +29,6 @@ class FollowAdapter(context: Context, dataList: ArrayList<HomeBean.Issue.Item>)
         }
     }
 }) {
-
 
     fun addData(dataList: ArrayList<HomeBean.Issue.Item>) {
         this.mData.addAll(dataList)
@@ -73,8 +73,8 @@ class FollowAdapter(context: Context, dataList: ArrayList<HomeBean.Issue.Item>)
         /**
          * 设置嵌套水平的 RecyclerView
          */
-        recyclerView.layoutManager = LinearLayoutManager(mContext as Activity,LinearLayoutManager.HORIZONTAL,false)
-        recyclerView.adapter = FollowHorizontalAdapter(mContext,item.data.itemList,R.layout.item_follow_horizontal)
+        recyclerView.layoutManager = LinearLayoutManager(mContext as Activity, LinearLayoutManager.HORIZONTAL, false)
+        recyclerView.adapter = FollowHorizontalAdapter(mContext, item.data.itemList, R.layout.item_follow_horizontal)
 
     }
 

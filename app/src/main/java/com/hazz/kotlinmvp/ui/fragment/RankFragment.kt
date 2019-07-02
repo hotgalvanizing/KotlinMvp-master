@@ -21,7 +21,8 @@ class RankFragment : BaseFragment(), RankContract.View {
 
     private val mPresenter by lazy { RankPresenter() }
 
-    private val mAdapter by lazy { activity?.let { CategoryDetailAdapter(it, itemList, R.layout.item_category_detail) } }
+    private val mAdapter by lazy { activity?.let
+        { CategoryDetailAdapter(it, itemList, R.layout.item_category_detail) } }
 
     private var itemList = ArrayList<HomeBean.Issue.Item>()
 

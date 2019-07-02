@@ -75,12 +75,13 @@ class HotFragment : BaseFragment(), HotTabContract.View {
     override fun setTabInfo(tabInfoBean: TabInfoBean) {
         multipleStatusView.showContent()
 
-        tabInfoBean.tabInfo.tabList.mapTo(mTabTitleList) { it.name }
-        tabInfoBean.tabInfo.tabList.mapTo(mFragmentList) { RankFragment.getInstance(it.apiUrl) }
+        tabInfoBean.tabInfo.tabList.mapTo(mTabTitleList)
+        { it.name }
+        tabInfoBean.tabInfo.tabList.mapTo(mFragmentList)
+        { RankFragment.getInstance(it.apiUrl) }
 
         mViewPager.adapter = BaseFragmentAdapter(childFragmentManager,mFragmentList,mTabTitleList)
         mTabLayout.setupWithViewPager(mViewPager)
-
     }
 
     override fun showError(errorMsg: String,errorCode:Int) {

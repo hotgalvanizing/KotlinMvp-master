@@ -25,12 +25,10 @@ import com.hazz.kotlinmvp.view.recyclerview.adapter.CommonAdapter
 class CategoryDetailAdapter(context: Context, dataList: ArrayList<HomeBean.Issue.Item>, layoutId: Int)
     : CommonAdapter<HomeBean.Issue.Item>(context, dataList, layoutId) {
 
-
     fun addData(dataList: ArrayList<HomeBean.Issue.Item>) {
         this.mData.addAll(dataList)
         notifyDataSetChanged()
     }
-
 
     override fun bindData(holder: ViewHolder, data: HomeBean.Issue.Item, position: Int) {
         setVideoItem(holder, data)

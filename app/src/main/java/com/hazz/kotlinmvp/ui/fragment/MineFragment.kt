@@ -18,9 +18,7 @@ import kotlinx.android.synthetic.main.fragment_mine.*
  */
 class MineFragment : BaseFragment(),View.OnClickListener {
 
-
     private var mTitle:String? =null
-
 
     companion object {
         fun getInstance(title:String): MineFragment {

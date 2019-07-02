@@ -23,15 +23,13 @@ import kotlinx.android.synthetic.main.fragment_category.*
 
 class CategoryFragment : BaseFragment(), CategoryContract.View {
 
-
     private val mPresenter by lazy { CategoryPresenter() }
 
-    private val mAdapter by lazy { activity?.let { CategoryAdapter(it, mCategoryList, R.layout.item_category) } }
+    private val mAdapter by lazy {
+        activity?.let { CategoryAdapter(it, mCategoryList, R.layout.item_category) } }
 
     private var mTitle: String? = null
     private var mCategoryList = ArrayList<CategoryBean>()
-
-
 
     /**
      * 伴生对象
@@ -53,10 +51,7 @@ class CategoryFragment : BaseFragment(), CategoryContract.View {
     @Suppress("DEPRECATION")
     override fun initView() {
         mPresenter.attachView(this)
-
-
         mLayoutStatusView = multipleStatusView
-
         mRecyclerView.adapter = mAdapter
         mRecyclerView.layoutManager =GridLayoutManager(activity,2)
         mRecyclerView.addItemDecoration(object : RecyclerView.ItemDecoration() {

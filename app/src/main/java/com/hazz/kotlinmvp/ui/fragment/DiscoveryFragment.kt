@@ -53,7 +53,6 @@ class DiscoveryFragment : BaseFragment() {
         mTabLayout.setupWithViewPager(mViewPager)
         TabLayoutHelper.setUpIndicatorWidth(mTabLayout)
 
-
     }
 
     override fun lazyLoad() {
