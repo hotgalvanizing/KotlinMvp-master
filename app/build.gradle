@@ -13,6 +13,10 @@ android {
             keyPassword '123456'
             storeFile file('../mvpdemo.keystore')
             storePassword '123456'
+//            keyAlias 'ktmp'
+//            keyPassword 'ktmp123456'
+//            storeFile file('../ktmp.jks')
+//            storePassword 'ktmp123456'
         }
     }
     compileSdkVersion rootProject.ext.android.compileSdkVersion
